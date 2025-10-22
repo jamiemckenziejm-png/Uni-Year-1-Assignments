@@ -97,11 +97,11 @@ namespace CET1004_Assignment1
                 Console.WriteLine("PRESS ANY KEY TO CONTINUE");
                 Console.ReadKey();
                 Console.WriteLine();
-
+                // players choice to stick or re-roll
                 Console.Write("Would you like to: \n 1:Stick \n 2:Re-roll \n\nYou selected option: ");
                 int choiceA = Convert.ToInt32(Console.ReadLine());
 
-                // Player A choice loop for re-roll or stick input validation
+                // loop to validate player A's choice
                 while (true)
                 {
                     if (choiceA == 1)
@@ -128,6 +128,8 @@ namespace CET1004_Assignment1
                         choiceA = Convert.ToInt32(Console.ReadLine());
                     }
                 }
+
+                //update and display total scores
                 TotalScoreA += roundScoreA;
                 TotalScoreB += roundScoreB;
                 Console.WriteLine();
