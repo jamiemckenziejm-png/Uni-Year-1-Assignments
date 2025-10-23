@@ -133,40 +133,7 @@ namespace CET1004_Assignment1
                             roundScoreA = die1A + die2A;
                         }
                     }
-  
-                
-                    //choiceA = Convert.ToInt32(Console.ReadLine());
-
                 }
-                // loop to validate player A's choice
-                //while (true)
-                //{
-                //    if (choiceA == 1)
-                //    {
-                //        break;
-                //    }
-                //    else if (choiceA == 2)
-                //    {
-                //        if (die1A < die2A)
-                //        {
-                //            die1A = rand.Next(1, 7);
-                //        }
-                //        else
-                //        {
-                //            die2A = rand.Next(1, 7);
-                //        }
-                //        Console.WriteLine("Player A re-rolled: " + die1A + " and " + die2A);
-                //        roundScoreA = die1A + die2A;
-                //        break;
-                //    }
-                //    else
-                //    {
-                //        Console.WriteLine("Invalid choice. Please enter '1' or '2'");
-                //        choiceA = Convert.ToInt32(Console.ReadLine());
-                //    }
-                //}
-
-                //update and display total scores
                 TotalScoreA += roundScoreA;
                 TotalScoreB += roundScoreB;
                 Console.WriteLine();
