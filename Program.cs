@@ -58,7 +58,6 @@ namespace CET1004_Assignment1
                 Console.WriteLine("                                    -----------------------------");
                 Console.WriteLine($"                                             Round {round}      ");
                 Console.WriteLine("                                    -----------------------------");
-                //Player A Turn
                 Console.WriteLine();
                 Console.WriteLine();
 
@@ -66,6 +65,12 @@ namespace CET1004_Assignment1
                 Random rand = new Random();
                 Console.WriteLine("Press any key to roll the Dice!!");
                 Console.ReadKey();
+                Console.Clear();
+                Console.WriteLine("                                    -----------------------------");
+                Console.WriteLine($"                                             Round {round}      ");
+                Console.WriteLine("                                    -----------------------------");
+                Console.WriteLine();
+                Console.WriteLine();
                 Console.WriteLine();
                 int die1A = rand.Next(1, 7);
                 int die2A = rand.Next(1, 7);
@@ -98,36 +103,68 @@ namespace CET1004_Assignment1
                 Console.ReadKey();
                 Console.WriteLine();
                 // players choice to stick or re-roll
-                Console.Write("Would you like to: \n 1:Stick \n 2:Re-roll \n\nYou selected option: ");
-                int choiceA = Convert.ToInt32(Console.ReadLine());
 
-                // loop to validate player A's choice
-                while (true)
+                bool validChoice = false;
+                int choiceA = 0;
+
+                while (!validChoice)
                 {
-                    if (choiceA == 1)
+                    Console.Write("Would you like to: \n 1:Stick \n 2:Re-roll \n\nYou selected option: ");
+                    validChoice = int.TryParse(Console.ReadLine(), out choiceA);
+
+                    if (validChoice)
                     {
-                        break;
-                    }
-                    else if (choiceA == 2)
-                    {
-                        if (die1A < die2A)
+                        if (!(choiceA == 1 || choiceA == 2))
                         {
-                            die1A = rand.Next(1, 7);
+                            validChoice = false;
                         }
-                        else
+
+                        if (choiceA == 2)
                         {
-                            die2A = rand.Next(1, 7);
+                            if (die1A < die2A)
+                            {
+                                die1A = rand.Next(1, 7);
+                            }
+                            else
+                            {
+                                die2A = rand.Next(1, 7);
+                            }
+                            Console.WriteLine("Player A re-rolled: " + die1A + " and " + die2A);
+                            roundScoreA = die1A + die2A;
                         }
-                        Console.WriteLine("Player A re-rolled: " + die1A + " and " + die2A);
-                        roundScoreA = die1A + die2A;
-                        break;
                     }
-                    else
-                    {
-                        Console.WriteLine("Invalid choice. Please enter '1' or '2'");
-                        choiceA = Convert.ToInt32(Console.ReadLine());
-                    }
+  
+                
+                    //choiceA = Convert.ToInt32(Console.ReadLine());
+
                 }
+                // loop to validate player A's choice
+                //while (true)
+                //{
+                //    if (choiceA == 1)
+                //    {
+                //        break;
+                //    }
+                //    else if (choiceA == 2)
+                //    {
+                //        if (die1A < die2A)
+                //        {
+                //            die1A = rand.Next(1, 7);
+                //        }
+                //        else
+                //        {
+                //            die2A = rand.Next(1, 7);
+                //        }
+                //        Console.WriteLine("Player A re-rolled: " + die1A + " and " + die2A);
+                //        roundScoreA = die1A + die2A;
+                //        break;
+                //    }
+                //    else
+                //    {
+                //        Console.WriteLine("Invalid choice. Please enter '1' or '2'");
+                //        choiceA = Convert.ToInt32(Console.ReadLine());
+                //    }
+                //}
 
                 //update and display total scores
                 TotalScoreA += roundScoreA;
