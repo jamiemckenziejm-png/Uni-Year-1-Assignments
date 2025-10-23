@@ -19,9 +19,9 @@ namespace CET1004_Assignment1
         static void GetUserName()
         {
             Console.Write("Please enter your name: ");
-            string userName = Console.ReadLine();
+            Player_name Player1 = new Player_name(Console.ReadLine());
             Console.WriteLine();
-            Console.WriteLine("Hello " + userName + ", Welcome to the DICE BATTLE GAME!! ");
+            Console.WriteLine("Hello " + Player1.GetPlayerName() + ", Welcome to the DICE BATTLE GAME!! ");
             Console.WriteLine();
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
@@ -61,7 +61,7 @@ namespace CET1004_Assignment1
                 Console.WriteLine();
                 Console.WriteLine();
 
-                // Random Dice Roll for Player A
+                
                 Random rand = new Random();
                 Console.WriteLine("Press any key to roll the Dice!!");
                 Console.ReadKey();
@@ -72,6 +72,8 @@ namespace CET1004_Assignment1
                 Console.WriteLine();
                 Console.WriteLine();
                 Console.WriteLine();
+
+                // roll dice for both players
                 int die1A = rand.Next(1, 7);
                 int die2A = rand.Next(1, 7);
                 int die1B = rand.Next(1, 7);
