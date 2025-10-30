@@ -10,28 +10,24 @@ namespace CET1004_Assignment1
     {
         static void Main(string[] args)
         {
+            
             //Dice Battle Game - Introduction
-            GetUserName();
+            GreetPlayer();
+            //Display Game Rules
             DisplayGameRules();
             //Start Game   
             DiceGame();
         }
-        static void GetUserName()
+        static void GreetPlayer()
         {
             Console.Write("Please enter your name: ");
 
-            // Create Player Object
+            // Create Player Object and pass user input to constructor
             Player_name Player1 = new Player_name(Console.ReadLine());
-            Console.WriteLine();
 
-            // Welcome Message calling player name from Player Object
-            Console.WriteLine("Hello " + Player1.GetPlayerName() + ", Welcome to the DICE BATTLE GAME!! ");
-            Console.WriteLine();
-
-            // obtain input from user before clering the console and moving to the next method
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
-            Console.Clear();
+            // Call WelcomePlayer method from Player Object
+            Player1.WelcomePlayer();
+  
         }
         static void DisplayGameRules()
         {
@@ -53,34 +49,28 @@ namespace CET1004_Assignment1
             int TotalScoreA = 0, TotalScoreB = 0;
             for (int round = 1; round <= 3; round++)
             {
-                Console.WriteLine("                                    -----------------------------");
-                Console.WriteLine($"                                             Round {round}      ");
-                Console.WriteLine("                                    -----------------------------");
-                Console.WriteLine();
-                Console.WriteLine();
+                Console.WriteLine("\t\t\t\t-----------------------------");
+                Console.WriteLine($"\t\t\t\t\t\tRound {round}      ");
+                Console.WriteLine("\t\t\t\t-----------------------------\n\n\n");
 
                 
                 Random rand = new Random();
                 Console.WriteLine("Press any key to roll the Dice!!");
                 Console.ReadKey();
                 Console.Clear();
-                Console.WriteLine("                                    -----------------------------");
-                Console.WriteLine($"                                             Round {round}      ");
-                Console.WriteLine("                                    -----------------------------");
-                Console.WriteLine();
-                Console.WriteLine();
-                Console.WriteLine();
+                Console.WriteLine("\t\t\t\t-----------------------------");
+                Console.WriteLine($"\t\t\t\t\t\tRound {round}      ");
+                Console.WriteLine("\t\t\t\t-----------------------------\n\n\n");
 
                 // roll dice for both players
                 int die1A = rand.Next(1, 7);
                 int die2A = rand.Next(1, 7);
                 int die1B = rand.Next(1, 7);
                 int die2B = rand.Next(1, 7);
-                Console.WriteLine("Player A rolled: " + die1A + " and " + die2A + "                                   Player B rolled: " + die1B + " and " + die2B);
+                Console.WriteLine("Player A rolled: " + die1A + " and " + die2A + "\t\t\t\tPlayer B rolled: " + die1B + " and " + die2B );
                 Console.WriteLine();
-                int roundScoreB = die1B + die2B;
                 int roundScoreA = die1A + die2A;
-              
+                int roundScoreB = die1B + die2B;
 
                 if (roundScoreB < 6)
                 {
@@ -92,14 +82,12 @@ namespace CET1004_Assignment1
                     {
                         die2B = rand.Next(1, 7);
                     }
-                    Console.WriteLine("                                                           Player B re-rolled: " + die1B + " and " + die2B);
+                    Console.WriteLine("\t\t\t\t\t\t\t\tPlayer B re-rolled: " + die1B + " and " + die2B);
                     roundScoreB = die1B + die2B;
                 }
                 Console.WriteLine();
-                Console.WriteLine("Player A's round score: " + roundScoreA + "                                  Player B's round score: " + roundScoreB);
-                Console.WriteLine();
-                Console.WriteLine();
-                Console.WriteLine("PRESS ANY KEY TO CONTINUE");
+                Console.WriteLine("Player A's round score: " + roundScoreA + "\t\t\t\tPlayer B's round score: " + roundScoreB);
+                Console.WriteLine("\n\nPRESS ANY KEY TO CONTINUE");
                 Console.ReadKey();
                 Console.WriteLine();
                 // players choice to stick or re-roll
