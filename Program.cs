@@ -54,7 +54,7 @@ namespace CET1004_Assignment1
                 Console.WriteLine("\t\t\t\t-----------------------------\n\n\n");
 
                 
-                Random rand = new Random();
+                
                 Console.WriteLine("Press any key to roll the Dice!!");
                 Console.ReadKey();
                 Console.Clear();
@@ -62,7 +62,8 @@ namespace CET1004_Assignment1
                 Console.WriteLine($"\t\t\t\t\t\tRound {round}      ");
                 Console.WriteLine("\t\t\t\t-----------------------------\n\n\n");
 
-                // roll dice for both players
+                // create random diceroll object and generate dice rolls for both players
+                Random rand = new Random();
                 int die1A = rand.Next(1, 7);
                 int die2A = rand.Next(1, 7);
                 int die1B = rand.Next(1, 7);
@@ -125,9 +126,8 @@ namespace CET1004_Assignment1
                 TotalScoreA += roundScoreA;
                 TotalScoreB += roundScoreB;
                 Console.WriteLine();
-                Console.WriteLine("Player A's total score: " + TotalScoreA + "                                  Player B's total score: " + TotalScoreB);
-                Console.WriteLine();
-                Console.WriteLine("PRESS ANY KEY TO MOVE TO THE NEXT ROUND");
+                Console.WriteLine("Player A's total score: " + TotalScoreA + "\t\t\t\tPlayer B's total score: " + TotalScoreB);
+                Console.WriteLine("\nPRESS ANY KEY TO MOVE TO CONTINUE");
                 Console.ReadKey();
                 Console.Clear();
 
