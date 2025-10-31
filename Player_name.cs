@@ -34,7 +34,7 @@ namespace CET1004_Assignment1
             sPlayerName = psPlayerName;
         }
 
-
+        // Method to welcome player
         public void WelcomePlayer()
         {
 
