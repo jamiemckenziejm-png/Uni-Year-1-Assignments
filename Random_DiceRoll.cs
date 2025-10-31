@@ -14,7 +14,7 @@ namespace CET1004_Assignment1
         //constructor to roll the dice 
         public Random_DiceRoll()
         {
-            RandomRoll();
+            DiceNumber = rand.Next(1, 7);
         }
 
         // getter for the dice number rolled 
@@ -23,10 +23,5 @@ namespace CET1004_Assignment1
             return DiceNumber;
         }
 
-        // method to roll the dice when required 
-        public void RandomRoll()
-        {
-            DiceNumber = rand.Next(1, 7);
-        }
     }
 }
