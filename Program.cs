@@ -10,7 +10,7 @@ namespace CET1004_Assignment1
     {
         static void Main(string[] args)
         {
-
+            List<int> choices = new List<int>();
             //Call GreetPlayer method
             GreetPlayer();
             //Display Game Rules from GameRules class
@@ -40,16 +40,13 @@ namespace CET1004_Assignment1
             {
                 Console.WriteLine("\t\t\t----------------------------");
                 Console.WriteLine($"\t\t\t\tRound {round}      ");
-                Console.WriteLine("\t\t\t----------------------------\n\n\n");
-
-                
-                
-                Console.WriteLine("Press any key to roll the Dice!!");
+                Console.WriteLine("\t\t\t----------------------------");                
+                Console.WriteLine("\n\n\nPress any key to roll the Dice!!");
                 Console.ReadKey();
                 Console.Clear();
                 Console.WriteLine("\t\t\t----------------------------");
                 Console.WriteLine($"\t\t\t\tRound {round}      ");
-                Console.WriteLine("\t\t\t----------------------------\n\n\n");
+                Console.WriteLine("\t\t\t----------------------------");
 
                 // create random diceroll object and generate dice rolls for both players
                 Random_DiceRoll die1A = new Random_DiceRoll();
@@ -58,40 +55,22 @@ namespace CET1004_Assignment1
                 Random_DiceRoll die2B = new Random_DiceRoll();
 
                 // display initial dice rolls
-                Console.WriteLine("Player A rolled: " + die1A.GetDiceRoll() + " and " + die2A.GetDiceRoll() + "\t\t\t\tPlayer B rolled: " + die1B.GetDiceRoll() + " and " + die2B.GetDiceRoll());
+                Console.WriteLine("\n\n\nPlayer A rolled: " + die1A.GetDiceRoll() + " and " + die2A.GetDiceRoll() + "\t\t\t\tPlayer B rolled: " + die1B.GetDiceRoll() + " and " + die2B.GetDiceRoll());
                 Console.WriteLine();
 
+                // calculate round scores
                 int roundScoreA = die1A.GetDiceRoll() + die2A.GetDiceRoll();
                 int roundScoreB = die1B.GetDiceRoll() + die2B.GetDiceRoll();
 
-                if (roundScoreB < 6)
-                {
-                    if (die1B.GetDiceRoll() < die2B.GetDiceRoll())
-                    {
-                        die1B = new Random_DiceRoll(); 
-                    }
-                    else
-                    {
-                        die2B = new Random_DiceRoll();
-                    }
-                    Console.WriteLine("\t\t\t\t\t\t\tPlayer B re-rolled: " + die1B.GetDiceRoll() + " and " + die2B.GetDiceRoll());
-                    roundScoreB = die1B.GetDiceRoll() + die2B.GetDiceRoll();
-                }
-                Console.WriteLine();
-                Console.WriteLine("Player A's round score: " + roundScoreA + "\t\t\t\tPlayer B's round score: " + roundScoreB);
-                Console.WriteLine("\n\nPRESS ANY KEY TO CONTINUE");
-                Console.ReadKey();
-                Console.WriteLine();
                 // players choice to stick or re-roll
-
                 bool validChoice = false;
                 int choiceA;
-
+                
                 while (!validChoice)
                 {
                     Console.Write("Would you like to: \n 1:Stick \n 2:Re-roll \n\nYou selected option: ");
                     validChoice = int.TryParse(Console.ReadLine(), out choiceA);
-
+                    
                     if (validChoice)
                     {
                         if (!(choiceA == 1 || choiceA == 2))
@@ -114,6 +93,26 @@ namespace CET1004_Assignment1
                         }
                     }
                 }
+                // Player B logic to re-roll if score is less than 6
+                if (roundScoreB < 6)
+                {
+                    if (die1B.GetDiceRoll() < die2B.GetDiceRoll())
+                    {
+                        die1B = new Random_DiceRoll(); 
+                    }
+                    else
+                    {
+                        die2B = new Random_DiceRoll();
+                    }
+                    Console.WriteLine("\t\t\t\t\t\t\tPlayer B re-rolled: " + die1B.GetDiceRoll() + " and " + die2B.GetDiceRoll());
+                    roundScoreB = die1B.GetDiceRoll() + die2B.GetDiceRoll();
+                }
+                Console.WriteLine();
+                Console.WriteLine("Player A's round score: " + roundScoreA + "\t\t\t\tPlayer B's round score: " + roundScoreB);
+                Console.WriteLine("\n\nPRESS ANY KEY TO CONTINUE");
+                Console.ReadKey();
+                Console.WriteLine();
+
                 TotalScoreA += roundScoreA;
                 TotalScoreB += roundScoreB;
                 Console.WriteLine();
