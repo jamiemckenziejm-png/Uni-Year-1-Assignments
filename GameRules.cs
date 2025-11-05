@@ -10,6 +10,7 @@ namespace CET1004_Assignment1
     {
         public static void DisplayGameRules()
         {
+            GameTitle.DisplayGameTitle();
             Console.WriteLine("GAME RULES:");
             Console.WriteLine("\n 1. The game is played between two players (Player A = you : Player B = the computer) over 3 rounds");
             Console.WriteLine("\n 2. Each player takes turns to roll two dice.");

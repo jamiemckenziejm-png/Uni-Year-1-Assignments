@@ -10,9 +10,9 @@ namespace CET1004_Assignment1
     {
         public static void DisplayGameTitle() 
         {
-            Console.WriteLine("\t\t\t=====================================");
-            Console.WriteLine("\t\t\t        DICE BATTLE GAME");
-            Console.WriteLine("\t\t\t=====================================\n");
+            Console.WriteLine("\t\t\t=========================================");
+            Console.WriteLine("\t\t\t             DICE BATTLE GAME");
+            Console.WriteLine("\t\t\t=========================================\n");
         }
     }
 }
