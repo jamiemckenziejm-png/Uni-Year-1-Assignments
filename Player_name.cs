@@ -35,6 +35,9 @@ namespace CET1004_Assignment1
         }
         public static void Retrieve_Name()
         {
+            GameTitle.DisplayGameTitle();
+
+            // Prompt user to enter name
             Console.Write("Please enter your name: ");
 
             // Create Player Object and pass user input to constructor

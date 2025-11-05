@@ -10,7 +10,7 @@ namespace CET1004_Assignment1
     {
         static void Main(string[] args)
         {
-            List<int> choices = new List<int>();
+            
             //Call Retrieve_Name method from Player_name class
             Player_name.Retrieve_Name();
             //Display Game Rules from GameRules class
@@ -27,16 +27,18 @@ namespace CET1004_Assignment1
             // Loop through 3 rounds
             for (int round = 1; round <= 3; round++)
             {
+                GameTitle.DisplayGameTitle();
                 Console.WriteLine("\t\t\t----------------------------");
-                Console.WriteLine($"\t\t\t\tRound {round}      ");
+                Console.WriteLine($"\t\t\t      Round {round}");
                 Console.WriteLine("\t\t\t----------------------------");                
                 Console.WriteLine("\n\n\nPress any key to roll the Dice!!");
 
                 // Wait for user input and then clear console before continuing
                 Console.ReadKey();
                 Console.Clear();
+                GameTitle.DisplayGameTitle();
                 Console.WriteLine("\t\t\t----------------------------");
-                Console.WriteLine($"\t\t\t\tRound {round}      ");
+                Console.WriteLine($"\t\t\t      Round {round}");
                 Console.WriteLine("\t\t\t----------------------------");
 
                 // create random diceroll object and generate dice rolls for both players
@@ -55,31 +57,40 @@ namespace CET1004_Assignment1
 
                 // players choice to stick or re-roll with input validation
                 bool validChoice = false;
-                int choiceA;
-                
+                int choice;
+                string Stick = "STICK";
+                string ReRoll = "RE-ROLL";
                 while (!validChoice)
                 {
                     Console.Write("Would you like to: \n 1:Stick \n 2:Re-roll \n\nYou selected option: ");
-                    validChoice = int.TryParse(Console.ReadLine(), out choiceA);
+                    validChoice = int.TryParse(Console.ReadLine(), out choice);
                     
                     if (validChoice)
                     {
-                        if (!(choiceA == 1 || choiceA == 2))
+                        if (!(choice == 1 || choice == 2))
                         {
                             validChoice = false;
                         }
-
-                        if (choiceA == 2)
+                        // if player chooses to stick
+                        if (choice == 1)
                         {
-                            if (die1A.GetDiceRoll() < die2A.GetDiceRoll())
+                            Console.WriteLine("Player A chose to " + Stick);
+                        }
+
+                        // if player chooses to re-roll
+                        if (choice == 2)
+                        {
+                            if (die1A.GetDiceRoll() <= die2A.GetDiceRoll())
                             {
                                 die1A = new Random_DiceRoll();
+                                Console.WriteLine("Player A chose to " + ReRoll + " Dice 1.");
                             }
                             else
                             {
                                 die2A = new Random_DiceRoll();
+                                Console.WriteLine("Player A chose to " + ReRoll + " Dice 2.");
                             }
-                            Console.WriteLine("Player A re-rolled: " + die1A.GetDiceRoll() + " and " + die2A.GetDiceRoll());
+                            Console.WriteLine("The new roll results are: " + die1A.GetDiceRoll() + " and " + die2A.GetDiceRoll());
                             roundScoreA = die1A.GetDiceRoll() + die2A.GetDiceRoll();
                         }
                     }
