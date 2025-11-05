@@ -11,23 +11,12 @@ namespace CET1004_Assignment1
         static void Main(string[] args)
         {
             List<int> choices = new List<int>();
-            //Call GreetPlayer method
-            GreetPlayer();
+            //Call Retrieve_Name method from Player_name class
+            Player_name.Retrieve_Name();
             //Display Game Rules from GameRules class
             GameRules.DisplayGameRules();
             //Start Game   
             DiceGame();
-        }
-        static void GreetPlayer()
-        {
-            Console.Write("Please enter your name: ");
-
-            // Create Player Object and pass user input to constructor
-            Player_name Player1 = new Player_name(Console.ReadLine());
-
-            // Call WelcomePlayer method from Player Object
-            Player1.WelcomePlayer();
-  
         }
        
         static void DiceGame()
@@ -42,6 +31,8 @@ namespace CET1004_Assignment1
                 Console.WriteLine($"\t\t\t\tRound {round}      ");
                 Console.WriteLine("\t\t\t----------------------------");                
                 Console.WriteLine("\n\n\nPress any key to roll the Dice!!");
+
+                // Wait for user input and then clear console before continuing
                 Console.ReadKey();
                 Console.Clear();
                 Console.WriteLine("\t\t\t----------------------------");
@@ -58,11 +49,11 @@ namespace CET1004_Assignment1
                 Console.WriteLine("\n\n\nPlayer A rolled: " + die1A.GetDiceRoll() + " and " + die2A.GetDiceRoll() + "\t\t\t\tPlayer B rolled: " + die1B.GetDiceRoll() + " and " + die2B.GetDiceRoll());
                 Console.WriteLine();
 
-                // calculate round scores
+                // calculate round scores and store to new variables
                 int roundScoreA = die1A.GetDiceRoll() + die2A.GetDiceRoll();
                 int roundScoreB = die1B.GetDiceRoll() + die2B.GetDiceRoll();
 
-                // players choice to stick or re-roll
+                // players choice to stick or re-roll with input validation
                 bool validChoice = false;
                 int choiceA;
                 

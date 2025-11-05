@@ -33,7 +33,17 @@ namespace CET1004_Assignment1
         {
             sPlayerName = psPlayerName;
         }
+        public static void Retrieve_Name()
+        {
+            Console.Write("Please enter your name: ");
 
+            // Create Player Object and pass user input to constructor
+            Player_name Player1 = new Player_name(Console.ReadLine());
+
+            // Call WelcomePlayer method from Player Object
+            Player1.WelcomePlayer();
+
+        }
         // Method to welcome player
         public void WelcomePlayer()
         {
@@ -46,5 +56,6 @@ namespace CET1004_Assignment1
             Console.ReadKey();
             Console.Clear();
         }
+
     }
 }
