@@ -10,29 +10,31 @@ namespace CET1004_Assignment1
     {
 
         // Private playername variable
-        private string sPlayerName;
+        private string PlayerName;
 
         // Constructor with parameter
         public Player_name(string psPlayerName)
         {
-            sPlayerName = psPlayerName;
+            PlayerName = psPlayerName;
         }
 
         // Default constructor
         public Player_name()
         {
-            sPlayerName = "Player";
+            PlayerName = "Player";
         }
 
         // Getter and Setter methods
         public string GetPlayerName()
         {
-            return sPlayerName;
+            return PlayerName;
         }
         public void SetPlayerName(string psPlayerName)
         {
-            sPlayerName = psPlayerName;
+            PlayerName = psPlayerName;
         }
+
+        // Static method to retrieve player name
         public static void Retrieve_Name()
         {
             GameTitle.DisplayGameTitle();
@@ -52,7 +54,7 @@ namespace CET1004_Assignment1
         {
 
             // Welcome Message calling player name from Player Object
-            Console.WriteLine("\nHello " + sPlayerName + ", Welcome to the DICE BATTLE GAME!! \n");
+            Console.WriteLine("\nHello " + PlayerName + ", Welcome to the DICE BATTLE GAME!! \n");
 
             // obtain input from user before clering the console and moving to the next method
             Console.WriteLine("Press any key to continue...");
