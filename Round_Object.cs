@@ -8,36 +8,36 @@ namespace CET1004_Assignment1
 {
     internal class Round_Object
     {
-        // Private variables
-        public static int RoundNumber; // done
-        public static int PlayerA_RoundScore; //done
-        public static int PlayerB_RoundScore; // done
-        public static string Player_choice; // done
-        public static int PlayerA_Die1; // done
-        public static int PlayerA_Die2;// done
-        public static int PlayerA_Die3;
-        public static int PlayerB_Die1;
-        public static int PlayerB_Die2;
-        public static int PlayerB_Die3;
-        public static int PlayerA_Sixes;
-        public static int PlayerB_Sixes;
+        //static variables so they can be used in static method DisplayRoundSummary
+        static int RoundNumber; 
+        static int PlayerA_RoundScore;
+        static int PlayerB_RoundScore;
+        static string Player_choice; 
+        static int PlayerA_Die1; 
+        static int PlayerA_Die2;
+        static int PlayerA_Die3;
+        static int PlayerB_Die1;
+        static int PlayerB_Die2;
+        static int PlayerB_Die3;
+        static int PlayerA_Sixes;
+        static int PlayerB_Sixes;
 
-        // Constructor
-        public Round_Object(int iroundNumber, int iplayerA_RoundScore, int iplayerB_RoundScore, string splayer_choice, int iplayer_Die1, int iplayer_Die2, int iplayers_Reroll, int iplayerB_Die1, int iplayerB_Die2, int iplayerBs_Reroll, int iplayerA_Sixes, int iplayerB_Sixes)
-        {
-            RoundNumber = iroundNumber;
-            PlayerA_RoundScore = iplayerA_RoundScore;
-            PlayerB_RoundScore = iplayerB_RoundScore;
-            Player_choice = splayer_choice;
-            PlayerA_Die1 = iplayer_Die1;
-            PlayerA_Die2 = iplayer_Die2;
-            PlayerA_Die3 = iplayers_Reroll;
-            PlayerB_Die1 = iplayerB_Die1;
-            PlayerB_Die2 = iplayerB_Die2;
-            PlayerB_Die3 = iplayerBs_Reroll;
-            PlayerA_Sixes = iplayerA_Sixes;
-            PlayerB_Sixes = iplayerB_Sixes;
-        }
+        
+        //public Round_Object(int iroundNumber, int iplayerA_RoundScore, int iplayerB_RoundScore, string splayer_choice, int iplayer_Die1, int iplayer_Die2, int iplayers_Reroll, int iplayerB_Die1, int iplayerB_Die2, int iplayerBs_Reroll, int iplayerA_Sixes, int iplayerB_Sixes)
+        //{
+        //    RoundNumber = iroundNumber;
+        //    PlayerA_RoundScore = iplayerA_RoundScore;
+        //    PlayerB_RoundScore = iplayerB_RoundScore;
+        //    Player_choice = splayer_choice;
+        //    PlayerA_Die1 = iplayer_Die1;
+        //    PlayerA_Die2 = iplayer_Die2;
+        //    PlayerA_Die3 = iplayers_Reroll;
+        //    PlayerB_Die1 = iplayerB_Die1;
+        //    PlayerB_Die2 = iplayerB_Die2;
+        //    PlayerB_Die3 = iplayerBs_Reroll;
+        //    PlayerA_Sixes = iplayerA_Sixes;
+        //    PlayerB_Sixes = iplayerB_Sixes;
+        //}
         // Default constructor
         public Round_Object()
         {
@@ -172,20 +172,43 @@ namespace CET1004_Assignment1
             }
                 
             Console.WriteLine($"Player A Rolled {PlayerA_Sixes} six's");
-            Console.WriteLine($"\nPlayer A's Round Score: {PlayerA_RoundScore}");
-            Console.WriteLine($"Player B Dice: {PlayerB_Die1}, {PlayerB_Die2}");
-            if (PlayerB_RoundScore < 6 && PlayerB_Die1 < PlayerB_Die2)
+            Console.WriteLine($"PLAYER A ROUND SCORE: {PlayerA_RoundScore}");
+            Console.WriteLine($"\nPlayer B Dice: {PlayerB_Die1}, {PlayerB_Die2}");
+            if (PlayerB_RoundScore <= 6 && PlayerB_Die1 <= PlayerB_Die2)
             {
-                Console.WriteLine($"However, Player B scored less than six and therefore Re-Rolled and got: {PlayerB_Die2}, {PlayerB_Die3}");
+                Console.WriteLine($"However, Player B scored less than six, Dice Rerolled into: {PlayerB_Die2}, {PlayerB_Die3}");
             }
-            if (PlayerB_RoundScore < 6 && PlayerB_Die2 < PlayerB_Die1)
+            if (PlayerB_RoundScore <= 6 && PlayerB_Die2 < PlayerB_Die1)
             {
-                Console.WriteLine($"However, Player B scored less than six and therefore Re-Rolled and got: {PlayerB_Die1}, {PlayerB_Die3}");
+                Console.WriteLine($"However, Player B scored less than six,Dice Re-Rolled into: {PlayerB_Die1}, {PlayerB_Die3}");
+            }
+            if (PlayerB_RoundScore > 6)
+            {
+                Console.WriteLine("Player B chose to STICK with their score.");
             }
 
             Console.WriteLine($"Player B Rolled {PlayerB_Sixes} six's");
-            Console.WriteLine($"\nPlayer B's Round Score: {PlayerB_RoundScore}");
+            Console.WriteLine($"PLAYER B ROUND SCORE: {PlayerB_RoundScore}");
             Console.WriteLine("------------------------------\n");
+
+            if (PlayerA_RoundScore > PlayerB_RoundScore)
+            {
+                Console.WriteLine("PLAYER A WINS THIS ROUND!");
+                Console.WriteLine("------------------------------\n");
+
+            }
+            else if (PlayerB_RoundScore > PlayerA_RoundScore)
+            {
+                Console.WriteLine("PLAYER B WINS THIS ROUND!");
+                Console.WriteLine("------------------------------\n");
+
+            }
+            else
+            {
+                Console.WriteLine("THIS ROUND IS A TIE!");
+                Console.WriteLine("------------------------------\n");
+
+            }
         }
     }
 }

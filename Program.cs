@@ -1,6 +1,8 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,8 +19,10 @@ namespace CET1004_Assignment1
             GameRules.DisplayGameRules();
             //Start Game   
             DiceGame();
+            // End of Main method
+            FinalResults();
         }
-       
+
         static void DiceGame()
         {
             // Initialize total scores for both players
@@ -35,7 +39,7 @@ namespace CET1004_Assignment1
                 GameTitle.DisplayGameTitle();
                 Console.WriteLine("\t\t\t\t----------------------------");
                 Console.WriteLine($"\t\t\t                  Round {round}");
-                Console.WriteLine("\t\t\t\t----------------------------");                
+                Console.WriteLine("\t\t\t\t----------------------------");
                 Console.WriteLine("\n\n\nPress any key to roll the Dice!!");
 
                 // Wait for user input and then clear console before continuing
@@ -59,7 +63,7 @@ namespace CET1004_Assignment1
 
 
                 // display initial dice rolls
-                Console.Write("\n\n\nPlayer A rolled: " + die1A.GetDiceRoll() + " and " + die2A.GetDiceRoll()); 
+                Console.Write("\n\n\nPlayer A rolled: " + die1A.GetDiceRoll() + " and " + die2A.GetDiceRoll());
                 Console.WriteLine("\t\t\t\t\tPlayer B rolled: " + die1B.GetDiceRoll() + " and " + die2B.GetDiceRoll());
                 Console.WriteLine();
 
@@ -76,7 +80,7 @@ namespace CET1004_Assignment1
                 {
                     Console.Write("Would you like to: \n 1:Stick \n 2:Re-roll \n\nYou selected option: ");
                     validChoice = int.TryParse(Console.ReadLine(), out ichoice);
-                    
+
                     if (validChoice)
                     {
                         if (!(ichoice == 1 || ichoice == 2))
@@ -138,38 +142,28 @@ namespace CET1004_Assignment1
                 if (die2A.GetDiceRoll() == 6) sixesA++;
                 if (die1B.GetDiceRoll() == 6) sixesB++;
                 if (die2B.GetDiceRoll() == 6) sixesB++;
-                RoundResults.SetPlayerA_RoundScore(sixesA);
-                RoundResults.SetPlayerA_RoundScore(sixesB);
+                RoundResults.SetPlayerA_TotalSixes(sixesA);
+                RoundResults.SetPlayerB_TotalSixes(sixesB);
 
                 // Pause before displaying round results
                 Console.WriteLine("\nPRESS ANY KEY TO VIEW END OF ROUND RESULTS...");
                 Console.ReadKey();
                 Console.Clear();
                 RoundResults.SetPlayerA_RoundScore(roundScoreA);
-                RoundResults.SetPlayerA_RoundScore(roundScoreB);
+                RoundResults.SetPlayerB_RoundScore(roundScoreB);
                 TotalScoreA += roundScoreA;
                 TotalScoreB += roundScoreB;
                 // Display round results from Round_Object
                 Round_Object.DisplayRoundSummary();
-                //Console.WriteLine("\t\t\t  ------------------------------------");
-                //Console.WriteLine($"\t\t\t\t     Round {round} Results");
-                //Console.WriteLine("\t\t\t  ------------------------------------");
-                //Console.Write("\nPlayer A's round score: " + roundScoreA); 
-                //Console.WriteLine("\t\t\t\t\t\tPlayer B's round score: " + roundScoreB);
-
-
-
-                //// Update and display total scores
-
-                //Console.Write("\nPlayer A's total score: " + TotalScoreA);
-                //Console.WriteLine("\t\t\t\t\t\tPlayer B's total score: " + TotalScoreB);
-                //Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
-                //Console.ReadKey();
-                //Console.Clear();
+                Console.WriteLine("\nPRESS ANY KEY TO MOVE TO NEXT ROUND...");
+                Console.ReadKey();
+                Console.Clear();
 
                 // Store round results in Round_Object and add to list
                 RoundResultsList.Add(RoundResults);
             }
+            // End of DiceGame method
+            TotalScoreA = RoundResultsList[0].PlayerA_RoundScore;
         }
     }
 }
