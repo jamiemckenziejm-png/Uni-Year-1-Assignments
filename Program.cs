@@ -145,26 +145,27 @@ namespace CET1004_Assignment1
                 Console.WriteLine("\nPRESS ANY KEY TO VIEW END OF ROUND RESULTS...");
                 Console.ReadKey();
                 Console.Clear();
-
-                // Display round results
-                GameTitle.DisplayGameTitle();
-                Console.WriteLine("\t\t\t  ------------------------------------");
-                Console.WriteLine($"\t\t\t\t     Round {round} Results");
-                Console.WriteLine("\t\t\t  ------------------------------------");
-                Console.Write("\nPlayer A's round score: " + roundScoreA); 
-                Console.WriteLine("\t\t\t\t\t\tPlayer B's round score: " + roundScoreB);
                 RoundResults.SetPlayerA_RoundScore(roundScoreA);
                 RoundResults.SetPlayerA_RoundScore(roundScoreB);
-
-
-                // Update and display total scores
                 TotalScoreA += roundScoreA;
                 TotalScoreB += roundScoreB;
-                Console.Write("\nPlayer A's total score: " + TotalScoreA);
-                Console.WriteLine("\t\t\t\t\t\tPlayer B's total score: " + TotalScoreB);
-                Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
-                Console.ReadKey();
-                Console.Clear();
+                // Display round results from Round_Object
+                Round_Object.DisplayRoundSummary();
+                //Console.WriteLine("\t\t\t  ------------------------------------");
+                //Console.WriteLine($"\t\t\t\t     Round {round} Results");
+                //Console.WriteLine("\t\t\t  ------------------------------------");
+                //Console.Write("\nPlayer A's round score: " + roundScoreA); 
+                //Console.WriteLine("\t\t\t\t\t\tPlayer B's round score: " + roundScoreB);
+
+
+
+                //// Update and display total scores
+
+                //Console.Write("\nPlayer A's total score: " + TotalScoreA);
+                //Console.WriteLine("\t\t\t\t\t\tPlayer B's total score: " + TotalScoreB);
+                //Console.WriteLine("\nPRESS ANY KEY TO CONTINUE");
+                //Console.ReadKey();
+                //Console.Clear();
 
                 // Store round results in Round_Object and add to list
                 RoundResultsList.Add(RoundResults);

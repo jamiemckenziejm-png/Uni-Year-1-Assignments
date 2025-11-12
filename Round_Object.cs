@@ -9,35 +9,35 @@ namespace CET1004_Assignment1
     internal class Round_Object
     {
         // Private variables
-        public int RoundNumber; // done
-        public int PlayerA_RoundScore; //done
-        public int PlayerB_RoundScore; // done
-        public string Player_choice; // done
-        public int PlayerA_Die1; // done
-        public int PlayerA_Die2;// done
-        public int PlayerA_Die3;
-        public int PlayerB_Die1;
-        public int PlayerB_Die2;
-        public int PlayerB_Die3;
-        public int PlayerA_Sixes;
-        public int PlayerB_Sixes;
+        public static int RoundNumber; // done
+        public static int PlayerA_RoundScore; //done
+        public static int PlayerB_RoundScore; // done
+        public static string Player_choice; // done
+        public static int PlayerA_Die1; // done
+        public static int PlayerA_Die2;// done
+        public static int PlayerA_Die3;
+        public static int PlayerB_Die1;
+        public static int PlayerB_Die2;
+        public static int PlayerB_Die3;
+        public static int PlayerA_Sixes;
+        public static int PlayerB_Sixes;
 
-        //// Constructor
-        //public Round_Object(int iroundNumber, int iplayerA_RoundScore, int iplayerB_RoundScore, string splayer_choice, int iplayer_Die1, int iplayer_Die2, int iplayers_Reroll, int iplayerB_Die1, int iplayerB_Die2, int iplayerBs_Reroll, int iplayerA_Sixes, int iplayerB_Sixes)
-        //{
-        //    RoundNumber = iroundNumber;
-        //    PlayerA_RoundScore = iplayerA_RoundScore;
-        //    PlayerB_RoundScore = iplayerB_RoundScore;
-        //    Player_choice = splayer_choice;
-        //    Player_Die1 = iplayer_Die1;
-        //    Player_Die2 = iplayer_Die2;
-        //    Players_Reroll = iplayers_Reroll;
-        //    PlayerB_Die1 = iplayerB_Die1;
-        //    PlayerB_Die2 = iplayerB_Die2;
-        //    PlayerBs_Reroll = iplayerBs_Reroll;
-        //    PlayerA_Sixes = iplayerA_Sixes;
-        //    PlayerB_Sixes = iplayerB_Sixes;
-        //}
+        // Constructor
+        public Round_Object(int iroundNumber, int iplayerA_RoundScore, int iplayerB_RoundScore, string splayer_choice, int iplayer_Die1, int iplayer_Die2, int iplayers_Reroll, int iplayerB_Die1, int iplayerB_Die2, int iplayerBs_Reroll, int iplayerA_Sixes, int iplayerB_Sixes)
+        {
+            RoundNumber = iroundNumber;
+            PlayerA_RoundScore = iplayerA_RoundScore;
+            PlayerB_RoundScore = iplayerB_RoundScore;
+            Player_choice = splayer_choice;
+            PlayerA_Die1 = iplayer_Die1;
+            PlayerA_Die2 = iplayer_Die2;
+            PlayerA_Die3 = iplayers_Reroll;
+            PlayerB_Die1 = iplayerB_Die1;
+            PlayerB_Die2 = iplayerB_Die2;
+            PlayerB_Die3 = iplayerBs_Reroll;
+            PlayerA_Sixes = iplayerA_Sixes;
+            PlayerB_Sixes = iplayerB_Sixes;
+        }
         // Default constructor
         public Round_Object()
         {
@@ -156,8 +156,9 @@ namespace CET1004_Assignment1
         }
 
         // Method to display round summary
-        public void DisplayRoundSummary()
+        public static void DisplayRoundSummary()
         {
+            GameTitle.DisplayGameTitle();
             Console.WriteLine($"\n--- Round {RoundNumber} Summary ---");
             Console.WriteLine($"\nPlayer A Dice Rolls: {PlayerA_Die1}, {PlayerA_Die2}");
             Console.WriteLine($"Player A Chose to {Player_choice} in this round");
