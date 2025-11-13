@@ -10,6 +10,14 @@ namespace CET1004_Assignment1
 {
     internal class Program
     {
+        //static int TotalScoreA = 0, TotalScoreB = 0;
+        //static int TotalSixsA = 0, TotalSixsB = 0;
+
+        //public static int GetTotalScoreA()
+        //{
+        //    return TotalScoreA;
+        //}
+
         static void Main(string[] args)
         {
             
@@ -20,13 +28,14 @@ namespace CET1004_Assignment1
             //Start Game   
             DiceGame();
             // End of Main method
-            FinalResults();
+            //FinalResults();
         }
 
         static void DiceGame()
         {
             // Initialize total scores for both players
-            int TotalScoreA = 0, TotalScoreB = 0;
+            int TotalScoreA = 0, TotalScoreB = 0; 
+            int TotalSixsA = 0, TotalSixsB = 0;
 
             // list to store round results
             List<Round_Object> RoundResultsList = new List<Round_Object>();
@@ -142,8 +151,8 @@ namespace CET1004_Assignment1
                 if (die2A.GetDiceRoll() == 6) sixesA++;
                 if (die1B.GetDiceRoll() == 6) sixesB++;
                 if (die2B.GetDiceRoll() == 6) sixesB++;
-                RoundResults.SetPlayerA_TotalSixes(sixesA);
-                RoundResults.SetPlayerB_TotalSixes(sixesB);
+                RoundResults.SetPlayerA_Sixes(sixesA);
+                RoundResults.SetPlayerB_Sixes(sixesB);
 
                 // Pause before displaying round results
                 Console.WriteLine("\nPRESS ANY KEY TO VIEW END OF ROUND RESULTS...");
@@ -151,8 +160,8 @@ namespace CET1004_Assignment1
                 Console.Clear();
                 RoundResults.SetPlayerA_RoundScore(roundScoreA);
                 RoundResults.SetPlayerB_RoundScore(roundScoreB);
-                TotalScoreA += roundScoreA;
-                TotalScoreB += roundScoreB;
+                //TotalScoreA += roundScoreA;
+                //TotalScoreB += roundScoreB;
                 // Display round results from Round_Object
                 Round_Object.DisplayRoundSummary();
                 Console.WriteLine("\nPRESS ANY KEY TO MOVE TO NEXT ROUND...");
@@ -162,8 +171,13 @@ namespace CET1004_Assignment1
                 // Store round results in Round_Object and add to list
                 RoundResultsList.Add(RoundResults);
             }
-            // End of DiceGame method
-            TotalScoreA = RoundResultsList[0].PlayerA_RoundScore;
+            // storing total scores and sixes after 3 rounds
+            TotalScoreA = RoundResultsList[0].GetPlayerA_RoundScore() + RoundResultsList[1].GetPlayerA_RoundScore() + RoundResultsList[2].GetPlayerA_RoundScore();
+            TotalScoreB = RoundResultsList[0].GetPlayerB_RoundScore() + RoundResultsList[1].GetPlayerB_RoundScore() + RoundResultsList[2].GetPlayerB_RoundScore();
+            TotalSixsA = RoundResultsList[0].GetPlayerA_Sixes() + RoundResultsList[1].GetPlayerA_Sixes() + RoundResultsList[2].GetPlayerA_Sixes();
+            TotalSixsB = RoundResultsList[0].GetPlayerB_Sixes() + RoundResultsList[1].GetPlayerB_Sixes() + RoundResultsList[2].GetPlayerB_Sixes();
+
+            Final_Results final = new Final_Results(TotalScoreA, TotalScoreB, TotalSixsA, TotalSixsB);
         }
     }
 }

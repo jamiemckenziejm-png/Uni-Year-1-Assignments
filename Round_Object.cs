@@ -146,11 +146,11 @@ namespace CET1004_Assignment1
         {
             PlayerB_Die3 = iplayerB_Die3;
         }
-        public void SetPlayerA_TotalSixes(int iplayerA_Sixes) 
+        public void SetPlayerA_Sixes(int iplayerA_Sixes) 
         {
             PlayerA_Sixes = iplayerA_Sixes;
         }
-        public void SetPlayerB_TotalSixes(int iplayerB_Sixes) 
+        public void SetPlayerB_Sixes(int iplayerB_Sixes) 
         {
             PlayerB_Sixes = iplayerB_Sixes;
         }
@@ -184,7 +184,7 @@ namespace CET1004_Assignment1
             }
             if (PlayerB_RoundScore > 6)
             {
-                Console.WriteLine("Player B chose to STICK with their score.");
+                Console.WriteLine("Player B rolled higher than 5, score Kept.");
             }
 
             Console.WriteLine($"Player B Rolled {PlayerB_Sixes} six's");

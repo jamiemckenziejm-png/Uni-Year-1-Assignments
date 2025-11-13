@@ -15,18 +15,19 @@ namespace CET1004_Assignment1
         private int Total_SixesB;
 
 
-        public Final_Results()
+        public Final_Results(int pTotalScoreA, int pTotalScoreB, int pTotal_SixesA, int pTotal_SixesB)
         {
-           /// TotalScoreA = RoundResultsList[0].GetPlayerA_RoundScore;
-            TotalScoreB = 0;
-            Total_SixesA = 0;
-            Total_SixesB = 0;
+            TotalScoreA = pTotalScoreA;
+            TotalScoreB = pTotalScoreB;
+            Total_SixesA = pTotal_SixesA;
+            Total_SixesB = pTotal_SixesB;
 
             GameTitle.DisplayGameTitle();
             Console.WriteLine("\t\t\t\t----------------------------");
             Console.WriteLine("\t\t\t\t       FINAL RESULTS");
             Console.WriteLine("\t\t\t\t----------------------------\n");
-            
+            //Console.WriteLine(Program.GetTotalScoreA());
+            Console.WriteLine(TotalScoreA);
         }
     
     }
