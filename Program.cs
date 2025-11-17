@@ -31,11 +31,14 @@ namespace CET1004_Assignment1
             //FinalResults();
         }
 
-        static void DiceGame()
+        public static 
+            void DiceGame()
         {
             // Initialize total scores for both players
             int TotalScoreA = 0, TotalScoreB = 0; 
             int TotalSixsA = 0, TotalSixsB = 0;
+            int sixesA = 0;
+            int sixesB = 0;
 
             // list to store round results
             List<Round_Object> RoundResultsList = new List<Round_Object>();
@@ -128,7 +131,7 @@ namespace CET1004_Assignment1
                     }
                 }
                 // Player B logic to re-roll if score is less than 6
-                if (roundScoreB < 6)
+                if (roundScoreB <= 5)
                 {
                     if (die1B.GetDiceRoll() < die2B.GetDiceRoll())
                     {
@@ -145,8 +148,6 @@ namespace CET1004_Assignment1
                 }
 
                 // Calculate number of sixes rolled by each player
-                int sixesA = 0;
-                int sixesB = 0;
                 if (die1A.GetDiceRoll() == 6) sixesA++;
                 if (die2A.GetDiceRoll() == 6) sixesA++;
                 if (die1B.GetDiceRoll() == 6) sixesB++;

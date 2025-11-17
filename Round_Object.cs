@@ -174,15 +174,15 @@ namespace CET1004_Assignment1
             Console.WriteLine($"Player A Rolled {PlayerA_Sixes} six's");
             Console.WriteLine($"PLAYER A ROUND SCORE: {PlayerA_RoundScore}");
             Console.WriteLine($"\nPlayer B Dice: {PlayerB_Die1}, {PlayerB_Die2}");
-            if (PlayerB_RoundScore <= 6 && PlayerB_Die1 <= PlayerB_Die2)
+            if (PlayerB_RoundScore <= 5 && PlayerB_Die1 <= PlayerB_Die2)
             {
                 Console.WriteLine($"However, Player B scored less than six, Dice Rerolled into: {PlayerB_Die2}, {PlayerB_Die3}");
             }
-            if (PlayerB_RoundScore <= 6 && PlayerB_Die2 < PlayerB_Die1)
+            if (PlayerB_RoundScore <= 5 && PlayerB_Die2 < PlayerB_Die1)
             {
                 Console.WriteLine($"However, Player B scored less than six,Dice Re-Rolled into: {PlayerB_Die1}, {PlayerB_Die3}");
             }
-            if (PlayerB_RoundScore > 6)
+            if (PlayerB_RoundScore >= 6)
             {
                 Console.WriteLine("Player B rolled higher than 5, score Kept.");
             }
