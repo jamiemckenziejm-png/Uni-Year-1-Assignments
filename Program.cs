@@ -37,14 +37,15 @@ namespace CET1004_Assignment1
             // Initialize total scores for both players
             int TotalScoreA = 0, TotalScoreB = 0; 
             int TotalSixsA = 0, TotalSixsB = 0;
-            int sixesA = 0;
-            int sixesB = 0;
+            
 
             // list to store round results
             List<Round_Object> RoundResultsList = new List<Round_Object>();
             // Loop through 3 rounds
             for (int round = 1; round <= 3; round++)
             {
+                int sixesA = 0;
+                int sixesB = 0;
                 // create new Round_Object for each round
                 Round_Object RoundResults = new Round_Object();
                 RoundResults.SetRoundNumber(round);
@@ -148,10 +149,27 @@ namespace CET1004_Assignment1
                 }
 
                 // Calculate number of sixes rolled by each player
-                if (die1A.GetDiceRoll() == 6) sixesA++;
-                if (die2A.GetDiceRoll() == 6) sixesA++;
-                if (die1B.GetDiceRoll() == 6) sixesB++;
-                if (die2B.GetDiceRoll() == 6) sixesB++;
+                if (die1A.GetDiceRoll() == 6)
+                {
+                    sixesA++;
+                    TotalSixsA++;
+                }
+                if (die2A.GetDiceRoll() == 6)
+                {
+                    sixesA++;
+                    TotalSixsA++;
+                }
+                if (die1B.GetDiceRoll() == 6)
+                {
+                    sixesB++;
+                    TotalSixsB++;
+                }
+                if (die2B.GetDiceRoll() == 6)
+                {
+                    sixesB++;
+                    TotalSixsB++;
+                }
+                
                 RoundResults.SetPlayerA_Sixes(sixesA);
                 RoundResults.SetPlayerB_Sixes(sixesB);
 
@@ -175,8 +193,8 @@ namespace CET1004_Assignment1
             // storing total scores and sixes after 3 rounds
             TotalScoreA = RoundResultsList[0].GetPlayerA_RoundScore() + RoundResultsList[1].GetPlayerA_RoundScore() + RoundResultsList[2].GetPlayerA_RoundScore();
             TotalScoreB = RoundResultsList[0].GetPlayerB_RoundScore() + RoundResultsList[1].GetPlayerB_RoundScore() + RoundResultsList[2].GetPlayerB_RoundScore();
-            TotalSixsA = RoundResultsList[0].GetPlayerA_Sixes() + RoundResultsList[1].GetPlayerA_Sixes() + RoundResultsList[2].GetPlayerA_Sixes();
-            TotalSixsB = RoundResultsList[0].GetPlayerB_Sixes() + RoundResultsList[1].GetPlayerB_Sixes() + RoundResultsList[2].GetPlayerB_Sixes();
+           // TotalSixsA = RoundResultsList[0].GetPlayerA_Sixes() + RoundResultsList[1].GetPlayerA_Sixes() + RoundResultsList[2].GetPlayerA_Sixes();
+            // = RoundResultsList[0].GetPlayerB_Sixes() + RoundResultsList[1].GetPlayerB_Sixes() + RoundResultsList[2].GetPlayerB_Sixes();
 
             Final_Results final = new Final_Results(TotalScoreA, TotalScoreB, TotalSixsA, TotalSixsB);
         }

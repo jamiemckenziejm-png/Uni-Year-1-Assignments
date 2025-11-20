@@ -29,7 +29,7 @@ namespace CET1004_Assignment1
             if (TotalScoreA > TotalScoreB)
             {
                 Console.WriteLine("\nThe Final scores are :");
-                Console.WriteLine($"\nPlayer A : {TotalScoreA}  VS  \t\t\t\t\tPlayer B : {TotalScoreB}");
+                Console.WriteLine($"\nPlayer A : {TotalScoreA} rolling 6 :{Total_SixesA} times \t\tVS  \t\t\tPlayer B : {TotalScoreB} rolling 6 :{Total_SixesB} times");
                 Console.WriteLine("==============================================");
                 Console.WriteLine("CONGRATULATIONS PLAYER A, YOU ARE THE WINNER!!");
                 Console.WriteLine("==============================================");
@@ -37,7 +37,7 @@ namespace CET1004_Assignment1
             else if (TotalScoreB > TotalScoreA)
             {
                 Console.WriteLine("\nThe Final scores are :");
-                Console.WriteLine($"\nPlayer A : {TotalScoreA}  VS  \t\t\t\t\tPlayer B : {TotalScoreB}");
+                Console.WriteLine($"\nPlayer A : {TotalScoreA} rolling 6 :{Total_SixesA} times \t\tVS  \t\t\tPlayer B : {TotalScoreB} rolling 6 :{Total_SixesB} times");
                 Console.WriteLine("\n==============================================");
                 Console.WriteLine("\tPLAYER B WINS...... YOU LOSE!!");
                 Console.WriteLine("==============================================");
@@ -45,7 +45,7 @@ namespace CET1004_Assignment1
             else
             {
                 Console.WriteLine("\nThe Final scores are :");
-                Console.WriteLine($"\nPlayer A : {TotalScoreA}  VS  \t\t\t\t\tPlayer B : {TotalScoreB}");
+                Console.WriteLine($"\nPlayer A : {TotalScoreA} rolling 6 :{Total_SixesA} times \t\tVS  \t\t\tPlayer B : {TotalScoreB} rolling 6 :{Total_SixesB} times");
                 Console.WriteLine("==============================================");
                 Console.WriteLine("\t\t\t\tIT'S A TIE!!");
                 Console.WriteLine("==============================================");

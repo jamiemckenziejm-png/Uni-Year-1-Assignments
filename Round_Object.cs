@@ -162,27 +162,41 @@ namespace CET1004_Assignment1
             Console.WriteLine($"\n--- Round {RoundNumber} Summary ---");
             Console.WriteLine($"\nPlayer A Dice Rolls: {PlayerA_Die1}, {PlayerA_Die2}");
             Console.WriteLine($"Player A Chose to {Player_choice} in this round");
-            if (PlayerA_Die3 != 0 && PlayerA_Die1 < PlayerA_Die2)
+            //if (PlayerA_Die3 != 0 && PlayerA_Die1 < PlayerA_Die2)
+            //{
+            //    Console.WriteLine($"Player A Re-Rolled and got: {PlayerA_Die2}, {PlayerA_Die3}");
+            //}
+            //if (PlayerA_Die3 != 0 && PlayerA_Die2 <= PlayerA_Die1)
+            //{
+            //    Console.WriteLine($"Player A Re-Rolled and got: {PlayerA_Die1}, {PlayerA_Die3}");
+            //}    
+
+            if(PlayerA_Die3 != 0)
             {
-                Console.WriteLine($"Player A Re-Rolled and got: {PlayerA_Die2}, {PlayerA_Die3}");
+                if(PlayerA_Die1 < PlayerA_Die2)
+                {
+                    Console.WriteLine($"Player A Re-Rolled and got: {PlayerA_Die2}, {PlayerA_Die3}");
+                }
+                else 
+                {
+                    Console.WriteLine($"Player A Re-Rolled and got: {PlayerA_Die1}, {PlayerA_Die3}");
+                }
             }
-            if (PlayerA_Die3 != 0 && PlayerA_Die2 < PlayerA_Die1)
-            {
-                Console.WriteLine($"Player A Re-Rolled and got: {PlayerA_Die1}, {PlayerA_Die3}");
-            }
-                
+
             Console.WriteLine($"Player A Rolled {PlayerA_Sixes} six's");
             Console.WriteLine($"PLAYER A ROUND SCORE: {PlayerA_RoundScore}");
+
+
             Console.WriteLine($"\nPlayer B Dice: {PlayerB_Die1}, {PlayerB_Die2}");
-            if (PlayerB_RoundScore <= 5 && PlayerB_Die1 <= PlayerB_Die2)
+            if (PlayerB_Die3 != 0 && PlayerB_Die1 <= PlayerB_Die2)
             {
                 Console.WriteLine($"However, Player B scored less than six, Dice Rerolled into: {PlayerB_Die2}, {PlayerB_Die3}");
             }
-            if (PlayerB_RoundScore <= 5 && PlayerB_Die2 < PlayerB_Die1)
+            if (PlayerB_Die3 != 0 && PlayerB_Die2 < PlayerB_Die1)
             {
                 Console.WriteLine($"However, Player B scored less than six,Dice Re-Rolled into: {PlayerB_Die1}, {PlayerB_Die3}");
             }
-            if (PlayerB_RoundScore >= 6)
+            if (PlayerB_Die3 == 0 && PlayerB_RoundScore > 5)
             {
                 Console.WriteLine("Player B rolled higher than 5, score Kept.");
             }
