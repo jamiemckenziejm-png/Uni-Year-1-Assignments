@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace CET1004_Assignment1
 {
@@ -21,8 +22,8 @@ namespace CET1004_Assignment1
         static int PlayerB_Die3;
         static int PlayerA_Sixes;
         static int PlayerB_Sixes;
+        WriteToLog NewLog = new WriteToLog(RoundNumber, PlayerA_RoundScore, PlayerB_RoundScore, Player_choice, PlayerA_Die1, PlayerA_Die2, PlayerA_Die3, PlayerB_Die1, PlayerB_Die2, PlayerB_Die3, PlayerA_Sixes, PlayerB_Sixes);
 
-        
         //public Round_Object(int iroundNumber, int iplayerA_RoundScore, int iplayerB_RoundScore, string splayer_choice, int iplayer_Die1, int iplayer_Die2, int iplayers_Reroll, int iplayerB_Die1, int iplayerB_Die2, int iplayerBs_Reroll, int iplayerA_Sixes, int iplayerB_Sixes)
         //{
         //    RoundNumber = iroundNumber;
@@ -161,7 +162,7 @@ namespace CET1004_Assignment1
             GameTitle.DisplayGameTitle();
             Console.WriteLine($"\n--- Round {RoundNumber} Summary ---");
             Console.WriteLine($"\nPlayer A Dice Rolls: {PlayerA_Die1}, {PlayerA_Die2}");
-            Console.WriteLine($"Player A Chose to {Player_choice} in this round");
+            Console.WriteLine($"Player A Chose to {Player_choice}");
             //if (PlayerA_Die3 != 0 && PlayerA_Die1 < PlayerA_Die2)
             //{
             //    Console.WriteLine($"Player A Re-Rolled and got: {PlayerA_Die2}, {PlayerA_Die3}");
@@ -171,15 +172,15 @@ namespace CET1004_Assignment1
             //    Console.WriteLine($"Player A Re-Rolled and got: {PlayerA_Die1}, {PlayerA_Die3}");
             //}    
 
-            if(PlayerA_Die3 != 0)
+            if (PlayerA_Die3 != 0)
             {
                 if(PlayerA_Die1 < PlayerA_Die2)
                 {
-                    Console.WriteLine($"Player A Re-Rolled and got: {PlayerA_Die2}, {PlayerA_Die3}");
+                    Console.WriteLine($"Player A's New rolls are: {PlayerA_Die2}, {PlayerA_Die3}");
                 }
                 else 
                 {
-                    Console.WriteLine($"Player A Re-Rolled and got: {PlayerA_Die1}, {PlayerA_Die3}");
+                    Console.WriteLine($"Player A's New rolls are: {PlayerA_Die1}, {PlayerA_Die3}");
                 }
             }
 
@@ -223,6 +224,73 @@ namespace CET1004_Assignment1
                 Console.WriteLine("------------------------------\n");
 
             }
+
+            // write game title to log file
+            StreamWriter sw = new StreamWriter("Log.txt", true);
+            sw.WriteLine("\t\t\t=========================================");
+            sw.WriteLine("\t\t\t             DICE BATTLE GAME");
+            sw.WriteLine("\t\t\t=========================================\n");
+
+            // write player name to log file
+            sw.WriteLine($"Player Name: {Player_name.PlayerName} ");
+
+            // write round summary to log file
+            sw.WriteLine($"\n--- Round {RoundNumber} Summary ---");
+            sw.WriteLine($"\nPlayer A Initial Dice Rolls Were : {PlayerA_Die1} and {PlayerA_Die2}");
+            sw.WriteLine($"Player A Chose to {Player_choice}");
+            if (PlayerA_Die3 != 0)
+            {
+                if (PlayerA_Die1 < PlayerA_Die2)
+                {
+                    sw.WriteLine($"Player A's New rolls are: {PlayerA_Die2}, {PlayerA_Die3}");
+                }
+                else
+                {
+                    sw.WriteLine($"Player A's New rolls are: {PlayerA_Die1}, {PlayerA_Die3}");
+                }
+            }
+
+            sw.WriteLine($"\nPlayer A Rolled {PlayerA_Sixes} six's");
+            sw.WriteLine($"\nPLAYER A ROUND SCORE: {PlayerA_RoundScore}");
+
+
+            sw.WriteLine($"\n\nPlayer B Dice: {PlayerB_Die1}, {PlayerB_Die2}");
+            if (PlayerB_Die3 != 0 && PlayerB_Die1 <= PlayerB_Die2)
+            {
+                sw.WriteLine($"However, Player B scored less than six, Dice Rerolled into: {PlayerB_Die2}, {PlayerB_Die3}");
+            }
+            if (PlayerB_Die3 != 0 && PlayerB_Die2 < PlayerB_Die1)
+            {
+                sw.WriteLine($"However, Player B scored less than six,Dice Re-Rolled into: {PlayerB_Die1}, {PlayerB_Die3}");
+            }
+            if (PlayerB_Die3 == 0 && PlayerB_RoundScore > 5)
+            {
+                sw.WriteLine("Player B rolled higher than 5, score Kept.");
+            }
+
+            sw.WriteLine($"Player B Rolled {PlayerB_Sixes} six's");
+            sw.WriteLine($"PLAYER B ROUND SCORE: {PlayerB_RoundScore}");
+            sw.WriteLine("------------------------------\n");
+
+            if (PlayerA_RoundScore > PlayerB_RoundScore)
+            {
+                sw.WriteLine("PLAYER A WINS THIS ROUND!");
+                sw.WriteLine("------------------------------\n");
+
+            }
+            else if (PlayerB_RoundScore > PlayerA_RoundScore)
+            {
+                sw.WriteLine("PLAYER B WINS THIS ROUND!");
+                sw.WriteLine("------------------------------\n");
+
+            }
+            else
+            {
+                sw.WriteLine("THIS ROUND IS A TIE!");
+                sw.WriteLine("------------------------------\n");
+
+            }
+            sw.Close();
         }
     }
 }

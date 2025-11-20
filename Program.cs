@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace CET1004_Assignment1
 {
@@ -189,6 +190,7 @@ namespace CET1004_Assignment1
 
                 // Store round results in Round_Object and add to list
                 RoundResultsList.Add(RoundResults);
+                
             }
             // storing total scores and sixes after 3 rounds
             TotalScoreA = RoundResultsList[0].GetPlayerA_RoundScore() + RoundResultsList[1].GetPlayerA_RoundScore() + RoundResultsList[2].GetPlayerA_RoundScore();
@@ -197,6 +199,7 @@ namespace CET1004_Assignment1
             // = RoundResultsList[0].GetPlayerB_Sixes() + RoundResultsList[1].GetPlayerB_Sixes() + RoundResultsList[2].GetPlayerB_Sixes();
 
             Final_Results final = new Final_Results(TotalScoreA, TotalScoreB, TotalSixsA, TotalSixsB);
+            
         }
     }
 }

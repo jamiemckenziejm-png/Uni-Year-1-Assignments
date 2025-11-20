@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace CET1004_Assignment1
 {
@@ -10,7 +11,7 @@ namespace CET1004_Assignment1
     {
 
         // Private playername variable
-        private string PlayerName;
+        public static string PlayerName;
 
         // Constructor with parameter
         public Player_name(string psPlayerName)

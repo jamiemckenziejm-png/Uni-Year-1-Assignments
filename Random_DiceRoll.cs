@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace CET1004_Assignment1
 {
@@ -14,7 +15,7 @@ namespace CET1004_Assignment1
         //constructor to roll the dice 
         public Random_DiceRoll()
         {
-            DiceNumber = rand.Next(5, 7);
+            DiceNumber = rand.Next(1, 7);
         }
 
         // getter for the dice number rolled 
