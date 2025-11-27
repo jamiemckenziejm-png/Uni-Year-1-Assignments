@@ -62,6 +62,12 @@ namespace CET1004_Assignment1
             Console.ReadKey();
             Console.Clear();
         }
-
+        // write player name to log file
+        public static void LogPlayerName()
+        {
+            StreamWriter sw = new StreamWriter("Log.txt", true);
+            sw.WriteLine($"Player Name: {Player_name.PlayerName} ");
+            sw.Close();
+        }
     }
 }

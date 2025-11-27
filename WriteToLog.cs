@@ -39,6 +39,22 @@ namespace CET1004_Assignment1
             PlayerA_Sixes = pPlayerA_Sixes;
             PlayerB_Sixes = pPlayerB_Sixes;
         }
+
+        public WriteToLog(Round_Object round)
+        {
+            RoundNumber = round.GetRoundNumber();
+            PlayerA_RoundScore = round.GetPlayerA_RoundScore();
+            PlayerB_RoundScore = round.GetPlayerB_RoundScore();
+            //Player_choice = pPlayer_choice;
+            //PlayerA_Die1 = pPlayerA_Die1;
+            //PlayerA_Die2 = pPlayerA_Die2;
+            //PlayerA_Die3 = pPlayerA_Die3;
+            //PlayerB_Die1 = pPlayerB_Die1;
+            //PlayerB_Die2 = pPlayerB_Die2;
+            //PlayerB_Die3 = pPlayerB_Die3;
+            //PlayerA_Sixes = pPlayerA_Sixes;
+            //PlayerB_Sixes = pPlayerB_Sixes;
+        }
     }
-   
-    }
+
+}
