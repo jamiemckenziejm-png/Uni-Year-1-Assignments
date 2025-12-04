@@ -18,38 +18,41 @@ namespace CET1004_Assignment1
         //{
         //    return TotalScoreA;
         //}
+        static List<Round_Object> RoundResultsList = new List<Round_Object>();
 
         static void Main(string[] args)
         {
-            
+
             //Call Retrieve_Name method from Player_name class
             Player_name.Retrieve_Name();
             //Display Game Rules from GameRules class
             GameRules.DisplayGameRules();
             //Start Game   
             DiceGame();
-            // End of Main method
-            //FinalResults();
+            // write Log file using the WriteToLog class
+            WriteToLog.WriteFile(RoundResultsList);
+
         }
 
-        public static 
-            void DiceGame()
+        public static void DiceGame()
         {
             // Initialize total scores for both players
-            int TotalScoreA = 0, TotalScoreB = 0; 
+            int TotalScoreA = 0, TotalScoreB = 0;
             int TotalSixsA = 0, TotalSixsB = 0;
-            
+
+
 
             // list to store round results
-            List<Round_Object> RoundResultsList = new List<Round_Object>();
+            //List<Round_Object> RoundResultsList = new List<Round_Object>();
             // Loop through 3 rounds
             for (int round = 1; round <= 3; round++)
             {
                 int sixesA = 0;
                 int sixesB = 0;
                 // create new Round_Object for each round
-                Round_Object RoundResults = new Round_Object();
-                RoundResults.SetRoundNumber(round);
+                //Round_Object RoundResults = new Round_Object();
+                RoundResultsList.Add(new Round_Object());
+                RoundResultsList[round - 1].SetRoundNumber(round);
                 GameTitle.DisplayGameTitle();
                 Console.WriteLine("\t\t\t\t----------------------------");
                 Console.WriteLine($"\t\t\t                  Round {round}");
@@ -70,10 +73,10 @@ namespace CET1004_Assignment1
                 Random_DiceRoll die1B = new Random_DiceRoll();
                 Random_DiceRoll die2B = new Random_DiceRoll();
                 // store initial dice rolls in RoundResults object
-                RoundResults.SetPlayerA_Die1(die1A.GetDiceRoll());
-                RoundResults.SetPlayerA_Die2(die2A.GetDiceRoll());
-                RoundResults.SetPlayerB_Die1(die1B.GetDiceRoll());
-                RoundResults.SetPlayerB_Die2(die2B.GetDiceRoll());
+                RoundResultsList[round - 1].SetPlayerA_Die1(die1A.GetDiceRoll());
+                RoundResultsList[round - 1].SetPlayerA_Die2(die2A.GetDiceRoll());
+                RoundResultsList[round - 1].SetPlayerB_Die1(die1B.GetDiceRoll());
+                RoundResultsList[round - 1].SetPlayerB_Die2(die2B.GetDiceRoll());
 
 
                 // display initial dice rolls
@@ -107,7 +110,7 @@ namespace CET1004_Assignment1
                         {
                             Console.WriteLine("Player A chose to " + Stick);
                             string sChoice = Stick;
-                            RoundResults.SetPlayer_choice(sChoice);
+                            RoundResultsList[round - 1].SetPlayer_choice(sChoice);
                         }
 
                         // if player chooses to re-roll
@@ -117,18 +120,18 @@ namespace CET1004_Assignment1
                             {
                                 die1A = new Random_DiceRoll();
                                 Console.WriteLine("\nPlayer A chose to " + ReRoll + " Dice 1.");
-                                RoundResults.SetPlayerA_Die3(die1A.GetDiceRoll());
+                                RoundResultsList[round - 1].SetPlayerA_Die3(die1A.GetDiceRoll());
                             }
                             else
                             {
                                 die2A = new Random_DiceRoll();
                                 Console.WriteLine("\nPlayer A chose to " + ReRoll + " Dice 2.");
-                                RoundResults.SetPlayerA_Die3(die2A.GetDiceRoll());
+                                RoundResultsList[round - 1].SetPlayerA_Die3(die2A.GetDiceRoll());
                             }
                             Console.WriteLine("\nThe new roll results are: " + die1A.GetDiceRoll() + " and " + die2A.GetDiceRoll());
                             roundScoreA = die1A.GetDiceRoll() + die2A.GetDiceRoll();
                             string sChoice = ReRoll;
-                            RoundResults.SetPlayer_choice(sChoice);
+                            RoundResultsList[round - 1].SetPlayer_choice(sChoice);
                         }
                     }
                 }
@@ -138,12 +141,12 @@ namespace CET1004_Assignment1
                     if (die1B.GetDiceRoll() < die2B.GetDiceRoll())
                     {
                         die1B = new Random_DiceRoll();
-                        RoundResults.SetPlayerB_Die3(die1B.GetDiceRoll());
+                        RoundResultsList[round - 1].SetPlayerB_Die3(die1B.GetDiceRoll());
                     }
                     else
                     {
                         die2B = new Random_DiceRoll();
-                        RoundResults.SetPlayerB_Die3(die2B.GetDiceRoll());
+                        RoundResultsList[round - 1].SetPlayerB_Die3(die2B.GetDiceRoll());
                     }
                     Console.WriteLine("\t\t\t\t\t\t\t\tPlayer B re-rolled: " + die1B.GetDiceRoll() + " and " + die2B.GetDiceRoll());
                     roundScoreB = die1B.GetDiceRoll() + die2B.GetDiceRoll();
@@ -170,36 +173,42 @@ namespace CET1004_Assignment1
                     sixesB++;
                     TotalSixsB++;
                 }
-                
-                RoundResults.SetPlayerA_Sixes(sixesA);
-                RoundResults.SetPlayerB_Sixes(sixesB);
+
+                RoundResultsList[round - 1].SetPlayerA_Sixes(sixesA);
+                RoundResultsList[round - 1].SetPlayerB_Sixes(sixesB);
 
                 // Pause before displaying round results
                 Console.WriteLine("\nPRESS ANY KEY TO VIEW END OF ROUND RESULTS...");
                 Console.ReadKey();
                 Console.Clear();
-                RoundResults.SetPlayerA_RoundScore(roundScoreA);
-                RoundResults.SetPlayerB_RoundScore(roundScoreB);
+                RoundResultsList[round - 1].SetPlayerA_RoundScore(roundScoreA);
+                RoundResultsList[round - 1].SetPlayerB_RoundScore(roundScoreB);
                 //TotalScoreA += roundScoreA;
                 //TotalScoreB += roundScoreB;
                 // Display round results from Round_Object
-                Round_Object.DisplayRoundSummary();
+                RoundResultsList[round - 1].DisplayRoundSummary();
                 Console.WriteLine("\nPRESS ANY KEY TO MOVE TO NEXT ROUND...");
                 Console.ReadKey();
                 Console.Clear();
 
                 // Store round results in Round_Object and add to list
-                RoundResultsList.Add(RoundResults);
-                
+                //RoundResultsList.Add(RoundResultsList[round - 1]);
+
             }
-            // storing total scores and sixes after 3 rounds
-            TotalScoreA = RoundResultsList[0].GetPlayerA_RoundScore() + RoundResultsList[1].GetPlayerA_RoundScore() + RoundResultsList[2].GetPlayerA_RoundScore();
-            TotalScoreB = RoundResultsList[0].GetPlayerB_RoundScore() + RoundResultsList[1].GetPlayerB_RoundScore() + RoundResultsList[2].GetPlayerB_RoundScore();
-           // TotalSixsA = RoundResultsList[0].GetPlayerA_Sixes() + RoundResultsList[1].GetPlayerA_Sixes() + RoundResultsList[2].GetPlayerA_Sixes();
+            // storing total scores from all rounds
+            for (int i = 0; i < RoundResultsList.Count; i++)
+            {
+                TotalScoreA += RoundResultsList[i].GetPlayerA_RoundScore();
+                TotalScoreB += RoundResultsList[i].GetPlayerB_RoundScore();
+                // WriteToLog newlog = new WriteToLog(RoundResultsList);
+            }
+            // TotalScoreA = RoundResultsList[0].GetPlayerA_RoundScore() + RoundResultsList[1].GetPlayerA_RoundScore() + RoundResultsList[2].GetPlayerA_RoundScore();
+            // TotalScoreB = RoundResultsList[0].GetPlayerB_RoundScore() + RoundResultsList[1].GetPlayerB_RoundScore() + RoundResultsList[2].GetPlayerB_RoundScore();
+            // TotalSixsA = RoundResultsList[0].GetPlayerA_Sixes() + RoundResultsList[1].GetPlayerA_Sixes() + RoundResultsList[2].GetPlayerA_Sixes();
             // = RoundResultsList[0].GetPlayerB_Sixes() + RoundResultsList[1].GetPlayerB_Sixes() + RoundResultsList[2].GetPlayerB_Sixes();
 
             Final_Results final = new Final_Results(TotalScoreA, TotalScoreB, TotalSixsA, TotalSixsB);
-            
+
         }
     }
 }
