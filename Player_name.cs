@@ -9,23 +9,30 @@ namespace CET1004_Assignment1
 {
     internal class Player_name
     {
-
+        //=========================================
         // Private playername variable
+        //=========================================
         public static string PlayerName;
 
-        // Constructor with parameter
+        //=========================================
+        // Constructor
+        //=========================================
         public Player_name(string psPlayerName)
         {
             PlayerName = psPlayerName;
         }
 
+        //=========================================
         // Default constructor
+        //=========================================
         public Player_name()
         {
             PlayerName = "Player";
         }
 
+        //=========================================
         // Getter and Setter methods
+        //=========================================
         public string GetPlayerName()
         {
             return PlayerName;
@@ -35,7 +42,9 @@ namespace CET1004_Assignment1
             PlayerName = psPlayerName;
         }
 
+        //=========================================
         // Static method to retrieve player name
+        //=========================================    
         public static void Retrieve_Name()
         {
             GameTitle.DisplayGameTitle();
@@ -43,26 +52,35 @@ namespace CET1004_Assignment1
             // Prompt user to enter name
             Console.Write("Please enter your name: ");
 
-            // Create Player Object and pass user input to constructor
-            Player_name Player1 = new Player_name(Console.ReadLine());
 
+            // Create Player Object and pass user input to constructor whilst insuring valid input
+            Player_name Player1 = new Player_name(Console.ReadLine());
+            while (Player1 == null || Player1.GetPlayerName().Trim().Length == 0)
+            {
+                Console.Write("Invalid input. Please enter a valid name: ");
+                Player1.SetPlayerName(Console.ReadLine());
+            }
             // Call WelcomePlayer method from Player Object
             Player1.WelcomePlayer();
 
         }
+        //=========================================
         // Method to welcome player
+        //=========================================
         public void WelcomePlayer()
         {
 
             // Welcome Message calling player name from Player Object
             Console.WriteLine("\nHello " + PlayerName + ", Welcome to the DICE BATTLE GAME!! \n");
 
-            // obtain input from user before clering the console and moving to the next method
+            // Obtain input from user before clering the console and moving to the next method
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
             Console.Clear();
         }
-        // write player name to log file
+        //=========================================
+        // Write player name to log file
+        //=========================================
         public static void LogPlayerName()
         {
             StreamWriter sw = new StreamWriter("Log.txt", true);

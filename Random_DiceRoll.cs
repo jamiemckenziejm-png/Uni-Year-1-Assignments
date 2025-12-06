@@ -9,16 +9,23 @@ namespace CET1004_Assignment1
 {
     internal class Random_DiceRoll
     {
+        //=========================================
+        // Static Random object to generate random numbers
+        //=========================================
         private static Random rand = new Random();
         private int DiceNumber;
 
-        //constructor to roll the dice 
+        //=========================================
+        // Constructor to roll the dice 
+        //=========================================
         public Random_DiceRoll()
         {
             DiceNumber = rand.Next(1, 7);
         }
 
-        // getter for the dice number rolled 
+        //=========================================
+        // Getter for the dice number rolled 
+        //=========================================
         public int GetDiceRoll()
         {
             return DiceNumber;
